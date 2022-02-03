@@ -2,6 +2,7 @@
 
 from bookstore import Book, BookStore
 from menu import Menu
+from readinglist.bookstore import BookError
 import ui
 
 store = BookStore()
@@ -33,7 +34,11 @@ def create_menu():
 
 def add_book():
     new_book = ui.get_book_info()
-    new_book.save()
+    try:
+        new_book.save()
+    except BookError:
+        print('Sorry ' + new_book.title + ' is already saved in the list.')
+        main()
     
 
 def show_read_books():
