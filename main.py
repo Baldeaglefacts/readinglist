@@ -34,7 +34,7 @@ def create_menu():
 def add_book():
     new_book = ui.get_book_info()
     new_book.save()
-    
+
 
 def show_read_books():
     read_books = store.get_books_by_read_value(True)
@@ -60,11 +60,14 @@ def search_book():
 def change_read():
 
     book_id = ui.get_book_id()
-    book = store.get_book_by_id(book_id)  
-    new_read = ui.get_read_value()     
-    book.read = new_read 
-    book.save()
-    
+    book = store.get_book_by_id(book_id)
+    if book is not None:
+        new_read = ui.get_read_value()
+        book.read = new_read
+        book.save()
+    else:
+        ui.message('Error: Book Not Found')
+
 
 def quit_program():
     ui.message('Thanks and bye!')
