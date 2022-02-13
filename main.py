@@ -33,7 +33,11 @@ def create_menu():
 
 def add_book():
     new_book = ui.get_book_info()
-    new_book.save()
+    matching_book = store.exact_match(new_book)
+    if matching_book == True:
+        ui.message('That book has already been entered.')
+    else:
+        new_book.save()
 
 
 def show_read_books():
