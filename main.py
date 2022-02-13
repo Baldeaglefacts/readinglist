@@ -2,7 +2,6 @@
 
 from bookstore import Book, BookStore
 from menu import Menu
-from readinglist.bookstore import BookError
 import ui
 
 store = BookStore()
