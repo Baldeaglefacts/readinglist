@@ -70,7 +70,6 @@ def change_read():
         new_read = ui.get_read_value()
         book.read = new_read
         book.save()
-        ui.message('You have read ' + book.title + ' by ' + book.author)
     else:
         ui.message('Error: Book Not Found')
 
